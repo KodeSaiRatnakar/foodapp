@@ -42,8 +42,12 @@ jobs:
 #           draft: false
 #           prerelease: false
 
-      - name: Upload APK
+
+      - name: Start Android Release Build
+        run: flutter build appbundle
+      # 8
+      - name: Upload Android Release
         uses: actions/upload-artifact@v2
         with:
-          name: APK
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: android-release
+          path: build/app/outputs/bundle/release/app-release.aab
