@@ -2,9 +2,9 @@ name: Flutter Build Action
 
 on:
   push:
-    branches: [ "main", "internal-actions" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main", "internal-actions" ]
+    branches: [ "master" ]
 
 jobs:
   build:
