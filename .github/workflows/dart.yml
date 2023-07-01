@@ -1,10 +1,12 @@
-name: Flutter Build Action
+name: Flutter Build and Release
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
   build:
@@ -24,6 +26,24 @@ jobs:
           channel: 'stable'
       
       - run: flutter pub get
-#       - run: flutter test
-      - run: flutter build apk
-      - run: flutter build appbundle
+
+      - run: flutter build apk --release
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          body: |
+            Release ${{ github.run_number }}
+          draft: false
+          prerelease: false
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: APK
+          path: build/app/outputs/flutter-apk/app-release.apk
