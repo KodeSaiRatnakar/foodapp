@@ -26,14 +26,14 @@ class MyTheme {
       textTheme: const TextTheme(
         bodySmall: TextStyle(
           fontFamily: 'Vazirmatn',
-          color:  Color(0xff828282),
+          color: Color(0xff828282),
           fontWeight: FontWeight.w400,
           fontSize: 14,
         ),
       ),
       elevatedButtonTheme: const ElevatedButtonThemeData(
         style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(
+          backgroundColor: WidgetStatePropertyAll(
             Color(0xffB4DC2F),
           ),
         ),

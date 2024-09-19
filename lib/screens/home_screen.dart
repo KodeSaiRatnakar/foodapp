@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -115,7 +117,6 @@ class _HeaderState extends State<Header> {
           locationName = "The current location is unknown";
           return;
         } else if (permission == LocationPermission.deniedForever) {
-          // ignore: use_build_context_synchronously
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
@@ -150,7 +151,6 @@ class _HeaderState extends State<Header> {
     } catch (e) {
       if (!isLoadedSecondTime) {
         try {
-          // ignore: use_build_context_synchronously
           showDialog(
             context: context,
             builder: (context) {
@@ -190,7 +190,7 @@ class _HeaderState extends State<Header> {
               );
             },
           );
-        } catch (e) {}
+        } catch (_) {}
       }
     }
     locationName = "The current location is unknown";
@@ -386,10 +386,10 @@ class CategoryItems extends StatelessWidget {
                   height: 40,
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: const MaterialStatePropertyAll(
+                      backgroundColor: const WidgetStatePropertyAll(
                         Color(0xffF8F8F8),
                       ),
-                      shape: MaterialStateProperty.all(
+                      shape: WidgetStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
@@ -435,7 +435,7 @@ class CategoryItems extends StatelessWidget {
                 height: 40,
                 child: ElevatedButton(
                   style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                          shape: MaterialStateProperty.all(
+                          shape: WidgetStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
@@ -467,10 +467,10 @@ class ItemsGrid extends StatelessWidget {
       shrinkWrap: true,
       itemCount: 6,
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
+        return const Padding(
+          padding: EdgeInsets.symmetric(vertical: 12),
           child: Row(
-            children: const [
+            children: [
               FoodsCard(foodType: "Meet"),
               Spacer(),
               FoodsCard(
