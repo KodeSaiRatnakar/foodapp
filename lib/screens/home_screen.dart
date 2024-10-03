@@ -431,7 +431,7 @@ class CategoryItems extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Center(
               child: SizedBox(
-                width: 60,
+                width: 70,
                 height: 40,
                 child: ElevatedButton(
                   style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
